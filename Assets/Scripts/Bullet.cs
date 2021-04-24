@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
             if (collision.GetComponent<Enemy>().hp <= 0)
                 collision.GetComponent<Enemy>().Death();
         }
-        Debug.Log(collision.gameObject);
         if(collision.tag != "Player" && collision.tag != "Ignore")
             Vanish();
     }
