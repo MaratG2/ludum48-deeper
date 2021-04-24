@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [Range(1f, 10f)] [SerializeField] private float verticalSpeed = 1f;
 
     private Rigidbody2D rb2d;
-    private SpriteRenderer sprite;
+    private SpriteRenderer spriteRenderer;
 
     private float horizontalInput;
     private float horizontalInputRaw;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     void Start()
     {
@@ -57,19 +57,20 @@ public class PlayerController : MonoBehaviour
         mouse_pos.x = mouse_pos.x - object_pos.x;
         mouse_pos.y = mouse_pos.y - object_pos.y;
         angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
-        angleBase = angle + addAngle;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
 
         if (angle >= -90f && angle <= 90f)
         {
-            sprite.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1); //maybe need to delete
             addAngle = 0f;
         }
         else
         {
-            sprite.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1); //maybe need to delete
             addAngle = -180f;
-        }  
+        }
+
+        angleBase = angle + addAngle;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
 
         return angle;
     }

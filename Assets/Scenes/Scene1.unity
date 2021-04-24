@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &56877202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 56877203}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &56877203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56877202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.48, y: -0.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 930671350}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &345957281
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +289,7 @@ GameObject:
   - component: {fileID: 930671352}
   - component: {fileID: 930671351}
   - component: {fileID: 930671353}
+  - component: {fileID: 930671354}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Untagged
@@ -278,6 +309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1175847591}
+  - {fileID: 56877203}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -332,6 +364,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 1
   verticalSpeed: 1
+--- !u!114 &930671354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930671349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f99ec45f15352449b040fa8ba58d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7356939563643055230, guid: 3e2a42c7b8fed864f85e6f33389f38e3,
+    type: 3}
+  bulletPivotPoint: {fileID: 56877203}
+  damage:
+  - 1
+  - 2
+  - 3
+  - 4
+  shootDelay:
+  - 1
+  - 0.75
+  - 0.5
+  - 0.25
+  travelTime:
+  - 1
+  - 2
+  - 3
+  - 4
+  travelSpeed:
+  - 3
+  - 4
+  - 5
+  - 6
+  bulletSprites:
+  - {fileID: 21300000, guid: 717a561679f0c4f4f9a9af7d345383e3, type: 3}
+  - {fileID: 21300000, guid: a494680284938b04393ab63055d3f58e, type: 3}
+  - {fileID: 21300000, guid: 04e2088942b24804fa938b5b8688bb52, type: 3}
+  - {fileID: 21300000, guid: 749951ba9c6411a409fae4d64dffa6b5, type: 3}
+  keyShoot: 32
+  upgradeTier: 0
 --- !u!1 &1175847590
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +498,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5757ec705614d37478c071d97b5d65b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 17, y: 15}
