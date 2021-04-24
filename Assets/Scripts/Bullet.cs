@@ -28,7 +28,9 @@ public class Bullet : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-
+            collision.GetComponent<Enemy>().hp -= damage;
+            if (collision.GetComponent<Enemy>().hp <= 0)
+                collision.GetComponent<Enemy>().Death();
         }
 
         Vanish();
