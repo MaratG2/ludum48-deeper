@@ -13,12 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float immuneTime = 1f;
     private float immuneTimer = 0f;
     [HideInInspector] public bool immunity;
-    [SerializeField] private float depth = 0f;
-    [SerializeField] private float maxDepth = 10f;
+    [SerializeField] private int depth = 0;
+    [SerializeField] private int maxDepth = 10;
     [SerializeField] private float depthDamage = 10f;
     [SerializeField] private float depthTime = 1f;
     [SerializeField] private Image hpBar;
     [SerializeField] private TextMeshProUGUI textDepth;
+    [SerializeField] private TextMeshProUGUI textDepthCounter;
+    [SerializeField] private TextMeshProUGUI[] resQs;
     public Vector3 savePos;
     private float depthTimer = 0f;
     private float startY = 0f;
@@ -34,8 +36,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        depth = transform.position.y - startY;
-        if (depth < -maxDepth)
+        depth = -Mathf.FloorToInt(transform.position.y - startY);
+        textDepthCounter.text = depth.ToString();
+        if (depth > maxDepth)
         {
             if (depthTimer < depthTime)
                 depthTimer += Time.deltaTime;
@@ -69,7 +72,15 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
             TakeDamage(1000f);
-    
+
+        for(int i = 0; i < 3; i++)
+        {
+            resQs[i].text = crystalls[i].ToString();
+            if (crystalls[i] != 0)
+                resQs[i].transform.parent.gameObject.SetActive(true);
+            else
+                resQs[i].transform.parent.gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
