@@ -21,15 +21,23 @@ public class Bullet : MonoBehaviour
         if (timer < travelTime)
             timer += Time.deltaTime;
         else
-        {
-            ParticleSystem ps = Instantiate(particlesExplosion, transform.position, transform.rotation);
-            ps.Play();
-            Destroy(gameObject);
-        }
+            Vanish();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.tag == "Enemy")
+        {
+
+        }
+
+        Vanish();
+    }
+
+    void Vanish()
+    {
+        ParticleSystem ps = Instantiate(particlesExplosion, transform.position, transform.rotation);
+        ps.Play();
+        Destroy(gameObject);
     }
 }
