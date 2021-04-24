@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private float verticalInputPos;
 
+    Vector3 mouse_pos;
+    Vector3 object_pos;
+    float angle;
+    float angleBase;
+    float addAngle = 0f;
+
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -29,20 +35,42 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         horizontalInputRaw = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+
         if (verticalInput >= 0)
             verticalInputPos = verticalInput * verticalSpeed;
         else
             verticalInputPos = 0;
 
-        if (horizontalInputRaw >= 0)
-            sprite.flipX = true;
-        else
-            sprite.flipX = false;
+        angleMouse();
     }
 
     void FixedUpdate()
     {
         rb2d.velocity = new Vector2(horizontalInput, -0.5f + verticalInputPos);
+    }
 
+    float angleMouse()
+    {
+        mouse_pos = Input.mousePosition;
+        mouse_pos.z = 5.23f; //The distance between the camera and object
+        object_pos = Camera.main.WorldToScreenPoint(transform.position);
+        mouse_pos.x = mouse_pos.x - object_pos.x;
+        mouse_pos.y = mouse_pos.y - object_pos.y;
+        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        angleBase = angle + addAngle;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
+
+        if (angle >= -90f && angle <= 90f)
+        {
+            sprite.flipX = true;
+            addAngle = 0f;
+        }
+        else
+        {
+            sprite.flipX = false;
+            addAngle = -180f;
+        }  
+
+        return angle;
     }
 }
