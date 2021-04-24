@@ -10,12 +10,12 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage * Time.deltaTime);
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage * Time.deltaTime);
     }
 
     public void Death()
