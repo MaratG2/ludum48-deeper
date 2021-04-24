@@ -9,13 +9,31 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage * Time.deltaTime);
+        Player pl = collision.gameObject.GetComponent<Player>();
+        if (pl)
+        {
+            if (!pl.immunity)
+            {
+                pl.TakeDamage(damage);
+                pl.immunity = true;
+                Debug.Log("EnemyDamage");
+                pl.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            } 
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-            collision.gameObject.GetComponent<Player>().TakeDamage(damage * Time.deltaTime);
+        Player pl = collision.gameObject.GetComponent<Player>();
+        if (pl)
+        {
+            if (!pl.immunity)
+            {
+                pl.TakeDamage(damage);
+                pl.immunity = true;
+                Debug.Log("EnemyDamage");
+                pl.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            }
+        }
     }
 
     public void Death()
