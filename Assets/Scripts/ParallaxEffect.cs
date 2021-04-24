@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class ParallaxEffect : MonoBehaviour
 {
-    private float startPos, length;
-    public new GameObject camera;
-    public float parallaxEffect;
-
+    //target can be rigidbody2d component of a player or some object
+    public Rigidbody2D target;
+    //speed of scrolling
+    public float speed;
+    public float widthScr = 200;
+    private float initPos;
+    private float initPosR;
+    private float initPosL;
+    public  float damp = 0.3f;
     void Start()
     {
-        startPos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        initPos = transform.localPosition.x;
+        initPosR = initPos + damp;
+        initPosL = initPos - damp;
+        //Create a clone for filling rest of the screen
+        //GameObject objectCopy = GameObject.Instantiate(this.gameObject);
+        //Destroy ScrollBackground component in clone
+        //Destroy(objectCopy.GetComponent<ParallaxEffect>());
+        //Set clone parent and position
+        //objectCopy.transform.SetParent(this.transform);
+        //objectCopy.transform.localPosition = new Vector3(getWidth(), 0, 0);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        float temp = camera.transform.position.x * (1 - parallaxEffect);
-        float dist = camera.transform.position.x * parallaxEffect;
-
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
-
-        if (temp > startPos + length)
-            startPos += length;
-        else if (temp < startPos - length)
-            startPos -= length;
+        //get target velocity
+        //if you wish to replace target with a non-rigidbody object, this is the place
+        float targetVelocity = target.velocity.x;
+        //translate sprite according to target velocity
+        this.transform.Translate(new Vector3(-speed * targetVelocity, 0, 0) * Time.deltaTime);
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, initPosL, initPosR), transform.position.y);
     }
 }
