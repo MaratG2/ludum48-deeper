@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour
         else
             verticalInputPos = 0;
 
-        angleMouse();
+        if(Time.timeScale != 0f)
+            angleMouse();
     }
 
     void FixedUpdate()

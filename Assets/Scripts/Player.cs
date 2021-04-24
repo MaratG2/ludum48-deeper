@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     [Range(0f, 100f)] [SerializeField] private float[] maxHP;
     [Tooltip("Don't change")] [SerializeField] private float hp = 100f; //
     [Range(0, 3)] public int upgradeTier = 0;
+    public int[] crystalls;
     [SerializeField] private float immuneTime = 1f;
     private float immuneTimer = 0f;
     [HideInInspector] public bool immunity;
@@ -14,13 +17,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxDepth = 10f;
     [SerializeField] private float depthDamage = 10f;
     [SerializeField] private float depthTime = 1f;
+    [SerializeField] private Image hpBar;
+    [SerializeField] private TextMeshProUGUI textDepth;
+    public Vector3 savePos;
     private float depthTimer = 0f;
     private float startY = 0f;
 
     void Awake()
     {
         hp = maxHP[upgradeTier];
-        //startY = transform.position.y;
+        startY = transform.position.y;
+    }
+    void Start()
+    {
+        transform.position = savePos;
     }
     void Update()
     {
@@ -32,12 +42,16 @@ public class Player : MonoBehaviour
             else
             {
                 TakeDamage(depthDamage);
+                textDepth.gameObject.SetActive(true);
                 Debug.Log("DepthDamage");
                 depthTimer = 0f;
             }
         }
         else
+        {
             depthTimer = 0f;
+            textDepth.gameObject.SetActive(false);
+        }
 
         if(immunity)
         {
@@ -50,6 +64,12 @@ public class Player : MonoBehaviour
                 immuneTimer = 0f;
             }
         }
+
+        hpBar.fillAmount = hp / maxHP[upgradeTier];
+
+        if(Input.GetKeyDown(KeyCode.R))
+            TakeDamage(1000f);
+    
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,10 +90,21 @@ public class Player : MonoBehaviour
             StartCoroutine(Death());
     }
 
+    private void Restart()
+    {
+        hp = maxHP[upgradeTier];
+        transform.position = savePos;
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (var enemy in enemies)
+        {
+            enemy.Restart();
+        }
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
+
     private IEnumerator Death()
     {
-        hp = 0;
-        Destroy(gameObject);
+        Restart();
         yield return null;
     }
 }
