@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach (var enemy in enemies)
         {
-            enemy.Restart();
+            //enemy.Restart();
         }
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
