@@ -59,7 +59,8 @@ public class Enemy : MonoBehaviour
                 SpriteRenderer[] sprites = pl.GetComponentsInChildren<SpriteRenderer>();
                 foreach (var s in sprites)
                 {
-                    s.color = Color.red;
+                    if(s.tag != "Flashlight")
+                        s.color = Color.red;
                 }
             }
         }

@@ -23,7 +23,10 @@ public class Crystal : MonoBehaviour
             circle.fillAmount = timerHarvest / timeHarvest;
             return;
         }
-        RaycastHit2D hit = Physics2D.Raycast(pl.weapon.bulletPivotPoint.position * -pl.transform.localScale.x, pl.transform.right, 5f);
+        //RaycastHit2D hit = Physics2D.Raycast(pl.weapon.bulletPivotPoint.position * -pl.transform.localScale.x, pl.transform.right, 5f);
+        RaycastHit2D hit = Physics2D.Raycast(pl.transform.position, pl.transform.right * 5f * -pl.transform.localScale.x, 5f);
+        //if (hit)
+            //Debug.Log("Hit: " + hit.collider.gameObject);
         //Debug.DrawRay(pl.transform.position, pl.transform.right * 5f * -pl.transform.localScale.x, Color.red, 1f);
         if (!hit)
         {
@@ -31,7 +34,7 @@ public class Crystal : MonoBehaviour
             circle.fillAmount = timerHarvest / timeHarvest;
             return;
         }
-        //Debug.Log(hit.collider.gameObject + " | " + gameObject + " | " + Input.GetMouseButton(0));
+        Debug.Log(hit.collider.gameObject + " | " + gameObject + " | " + Input.GetMouseButton(0));
         if (pl && hit.collider.gameObject == gameObject && Input.GetMouseButton(1))
         {
             if (timerHarvest < timeHarvest)

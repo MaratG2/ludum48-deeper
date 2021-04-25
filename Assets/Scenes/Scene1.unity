@@ -9087,7 +9087,7 @@ GameObject:
   - component: {fileID: 642909108}
   m_Layer: 2
   m_Name: Flashlight
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9683,7 +9683,7 @@ GameObject:
   - component: {fileID: 987159839}
   m_Layer: 2
   m_Name: FlashIm
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

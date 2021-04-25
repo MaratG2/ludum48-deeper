@@ -73,7 +73,8 @@ public class Player : MonoBehaviour
                 SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
                 foreach (var s in sprites)
                 {
-                    s.color = Color.white;
+                    if (s.tag != "Flashlight") 
+                        s.color = Color.white;
                 }
                 immuneTimer = 0f;
             }
