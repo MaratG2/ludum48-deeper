@@ -50,10 +50,14 @@ public class Enemy : MonoBehaviour
         {
             if (!pl.immunity)
             {
+                SpriteRenderer[] sprites = pl.GetComponentsInChildren<SpriteRenderer>();
+                foreach (var s in sprites)
+                {
+                    if (s.tag != "Flashlight")
+                        s.color = Color.red;
+                }
                 pl.TakeDamage(damage, true);
                 pl.immunity = true;
-                Debug.Log("EnemyDamage");
-                pl.GetComponentInChildren<SpriteRenderer>().color = Color.red;
             }
         }
     }
@@ -64,15 +68,14 @@ public class Enemy : MonoBehaviour
         {
             if (!pl.immunity)
             {
-                pl.TakeDamage(damage, true);
-                pl.immunity = true;
-                Debug.Log("EnemyDamage");
                 SpriteRenderer[] sprites = pl.GetComponentsInChildren<SpriteRenderer>();
                 foreach (var s in sprites)
                 {
-                    if(s.tag != "Flashlight")
+                    if (s.tag != "Flashlight")
                         s.color = Color.red;
                 }
+                pl.TakeDamage(damage, true);
+                pl.immunity = true;            
             }
         }
     }

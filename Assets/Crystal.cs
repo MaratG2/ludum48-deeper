@@ -14,16 +14,20 @@ public class Crystal : MonoBehaviour
     private bool vanished;
     private Vector3 startPos;
     private Player player;
+    private AudioSource drillAudioSource;
     private void Awake()
     {
         circle = GetComponentInChildren<Image>();
         startPos = transform.position;
+        drillAudioSource = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player pl = collision.GetComponent<Player>();
         if (pl)
+        {
             player = pl;
+        }
     }
     void Update()
     {
@@ -50,12 +54,16 @@ public class Crystal : MonoBehaviour
             if (timerHarvest < timeHarvest)
             {
                 timerHarvest += Time.deltaTime;
+                if (!drillAudioSource.isPlaying)
+                    drillAudioSource.Play();
+
                 player.crystal = this;
                 player.isHarvesting = true;
             }
             else
             {
                 player.crystalls[crystalType] += quantity;
+                drillAudioSource.Pause();
                 player.isHarvesting = false;
                 player.crystal = null;
                 circle.fillAmount = timerHarvest / timeHarvest;
@@ -66,6 +74,7 @@ public class Crystal : MonoBehaviour
         {
             timerHarvest = 0f;
             player.isHarvesting = false;
+            drillAudioSource.Pause();
         }
         circle.fillAmount = timerHarvest / timeHarvest;
     }
@@ -75,6 +84,7 @@ public class Crystal : MonoBehaviour
         if (pl)
         {
             timerHarvest = 0f;
+            drillAudioSource.Pause();
             player = null;
         }
     }
@@ -83,6 +93,7 @@ public class Crystal : MonoBehaviour
     {
         vanished = true;
         GetComponent<SpriteRenderer>().enabled = false;
+        drillAudioSource.Pause();
         gameObject.layer = 2;
     }
 

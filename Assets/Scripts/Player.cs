@@ -17,23 +17,34 @@ public class Player : MonoBehaviour
     [SerializeField] private float immuneTime = 1f;
     private float immuneTimer = 0f;
     [HideInInspector] public bool immunity;
+    private bool wasImmunity;
     public int depth = 0;
     [SerializeField] private int[] maxDepth;
     [SerializeField] private float depthDamage = 10f;
     [SerializeField] private float depthTime = 1f;
     [SerializeField] private Image hpBar;
+    public Image deathImage;
     [SerializeField] private TextMeshProUGUI textDepth;
     [SerializeField] private TextMeshProUGUI textDepthCounter;
     [SerializeField] private TextMeshProUGUI[] resQs;
     public Vector3 savePos;
     private float depthTimer = 0f;
     private float startY = 0f;
-   
+    public float deathScreenLong = 0.5f;
+    public float deathScreenFadeMulti = 1f;
+    [Header("Audio")]
+    public AudioSource moveAudioSource;
+    public AudioSource damageAudioSource;
+    public AudioClip[] takeDamageSound;
+    public AudioClip collideSound;
+    private Animator animator;
+    public bool inCr;
 
     void Awake()
     {
         hp = maxHP[upgradeTierHealth];
         startY = transform.position.y;
+        animator = GetComponentInChildren<Animator>();
     }
     void Start()
     {
@@ -63,7 +74,12 @@ public class Player : MonoBehaviour
             textDepth.gameObject.SetActive(false);
         }
 
-        if(immunity)
+        if (animator.GetFloat("speed") > 0 && !moveAudioSource.isPlaying)
+            moveAudioSource.Play();
+        else if(animator.GetFloat("speed") == 0)
+            moveAudioSource.Pause();
+
+        if (immunity)
         {
             if (immuneTimer < immuneTime)
                 immuneTimer += Time.deltaTime;
@@ -80,10 +96,10 @@ public class Player : MonoBehaviour
             }
         }
 
-        hpBar.fillAmount = hp / maxHP[upgradeTierHealth];
+        //if (Input.GetKeyDown(KeyCode.R))
+        //    TakeDamage(1000, false);
 
-        if(Input.GetKeyDown(KeyCode.R))
-            TakeDamage(1000f, false);
+        hpBar.fillAmount = hp / maxHP[upgradeTierHealth];
 
         for(int i = 0; i < 3; i++)
         {
@@ -93,29 +109,39 @@ public class Player : MonoBehaviour
             else
                 resQs[i].transform.parent.gameObject.SetActive(false);
         }
+
+        wasImmunity = immunity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            
-        }
+        if(collision.gameObject.tag != "Enemy")
+            moveAudioSource.PlayOneShot(collideSound);
     }
 
     public void TakeDamage(float damage, bool death)
     {
-        if (hp <= 0) return;
-
+        if(death)
+            damageAudioSource.PlayOneShot(takeDamageSound[Mathf.FloorToInt(Random.Range(0f, 2.99f))]);
+        
         hp -= damage;
 
-        if(hp <= 0)
+        if (hp <= 0 && !inCr)
+        {
+            StopAllCoroutines();
             StartCoroutine(Death(death));
+        }
     }
 
     private void Restart(bool death)
     {
         hp = maxHP[upgradeTierHealth];
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (var s in sprites)
+        {
+            if (s.tag != "Flashlight")
+                s.color = Color.white;
+        }
         transform.position = savePos;
         FindObjectOfType<GameManager>().timerSpawn = 0f;
         FindObjectOfType<GameManager>().isRandomedTimer = false;
@@ -144,6 +170,26 @@ public class Player : MonoBehaviour
     private IEnumerator Death(bool death)
     {
         Restart(death);
-        yield return null;
+
+        if (!death)
+            yield return null;
+        else
+        {
+            inCr = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            moveAudioSource.mute = true;
+            deathImage.color = new Color(deathImage.color.r, deathImage.color.g, deathImage.color.b, 1);
+            Time.timeScale = 0f;
+
+            yield return new WaitForSecondsRealtime(deathScreenLong);
+            Time.timeScale = 1f;
+            moveAudioSource.mute = false;
+            inCr = false;
+            while (deathImage.color.a != 0)
+            {
+                deathImage.color = new Color(deathImage.color.r, deathImage.color.g, deathImage.color.b, deathImage.color.a - 0.004f * deathScreenFadeMulti);
+                yield return new WaitForSecondsRealtime(0.016f);
+            }
+        }
     }
 }

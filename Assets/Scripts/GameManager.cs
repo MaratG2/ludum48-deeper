@@ -95,13 +95,17 @@ public class GameManager : MonoBehaviour
     public void OpenShop()
     {
         shop.SetActive(true);
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        player.moveAudioSource.mute = true;
         Time.timeScale = 0f;
     }
     public void CloseShop()
     {
         shop.SetActive(false);
         Time.timeScale = 1f;
-        FindObjectOfType<Player>().TakeDamage(1000f, false);
+        player.deathImage.color = new Color(player.deathImage.color.r, player.deathImage.color.g, player.deathImage.color.b, 0);
+        player.moveAudioSource.mute = false;
+        player.TakeDamage(1000f, false);
     }
 
     public void SpawnEnemy()
