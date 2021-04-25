@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float spawnX = 2.8f;
     [SerializeField] private float spawnYShift = 10f;
     [SerializeField] private float timeSpawn;
-    private float timerSpawn;
+    [HideInInspector] public float timerSpawn;
+    [HideInInspector] public bool isRandomedTimer;
     private float harvestChance;
-    private bool isRandomedTimer;
     private bool isRandomedChance;
     private Player player;
     private Crystal tempCrystal;

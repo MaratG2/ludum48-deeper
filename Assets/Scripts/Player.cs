@@ -117,6 +117,8 @@ public class Player : MonoBehaviour
         {
             //enemy.Restart();
         }
+        FindObjectOfType<GameManager>().timerSpawn = 0f;
+        FindObjectOfType<GameManager>().isRandomedTimer = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 

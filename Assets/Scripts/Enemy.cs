@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
     private void Navigate()
     {
         Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
-        Debug.Log("1: " + (Mathf.Log(Mathf.Abs(Mathf.Log(Mathf.Abs(maxDistance - Vector2.Distance(transform.position, player.transform.position)))))).ToString());
+        //Debug.Log("1: " + (Mathf.Log(Mathf.Abs(Mathf.Log(Mathf.Abs(maxDistance - Vector2.Distance(transform.position, player.transform.position)))))).ToString());
         rb2d.AddForce(speed * dir * Mathf.Abs(Mathf.Log(Mathf.Abs(Mathf.Log(Mathf.Abs(maxDistance - Vector2.Distance(transform.position, player.transform.position)))))));
     }
 }
