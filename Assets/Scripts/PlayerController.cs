@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [Range(0.5f, 10f)] [SerializeField] private float horizontalSpeed = 1f;
     [Range(1f, 10f)] [SerializeField] private float verticalSpeed = 1f;
-    [SerializeField] private float smooth = 10f;
+    [SerializeField] private float smoothCam = 10f;
+    [SerializeField] private float smoothIntert = 10f;
 
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(horizontalInput * horizontalSpeed, verticalInput * verticalSpeed);
+        rb2d.velocity = Vector2.Lerp(rb2d.velocity, new Vector2(horizontalInput * horizontalSpeed, verticalInput * verticalSpeed), Time.fixedDeltaTime * smoothIntert);
     }
 
     float angleMouse()
@@ -71,12 +72,24 @@ public class PlayerController : MonoBehaviour
             addAngle = -180f;
         }
         angleBase = angle + addAngle;
+
         if (wasAdd == addAngle)
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, angleBase)), Time.deltaTime * smooth);
+        {
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, angleBase)), Time.deltaTime * smoothCam);
+
+            //Debug.Log(Quaternion.ToEulerAngles(transform.rotation).z);
+        }
         else
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
 
+        var direction = Quaternion.Euler(new Vector3(0, 0, angleBase)) * transform.right;
+        var direction2 = transform.rotation * transform.right;
+        Debug.DrawRay(transform.position, direction * 150f, Color.red, 1f);
+        Debug.DrawRay(transform.position, direction2 * 150f, Color.yellow, 1f);
+
         wasAdd = addAngle;
+
         return angle;
     }
 }
