@@ -70,7 +70,11 @@ public class Player : MonoBehaviour
             else
             {
                 immunity = false;
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+                foreach (var s in sprites)
+                {
+                    s.color = Color.white;
+                }
                 immuneTimer = 0f;
             }
         }

@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 6215396145127695970}
   - component: {fileID: 6215396145127695971}
   - component: {fileID: 6215396145127695972}
-  - component: {fileID: 6215396145127695973}
   - component: {fileID: 6215396145127695969}
+  - component: {fileID: 5057245283875118983}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -155,12 +155,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70c9d811900ee22459d1162cbd3fbd07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 432e5d4c0d330d24d990af5387ef67ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.22, y: 1.7}
+  m_Size: {x: 2.22, y: 1.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -187,22 +187,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6215396145127695973
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6215396145127695974}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: bdd384c81e5f0b24789c1c8a82f21103, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.9
 --- !u!114 &6215396145127695969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,3 +203,19 @@ MonoBehaviour:
   speed: 1
   damage: 1
   startPos: {x: 0, y: 0, z: 0}
+--- !u!70 &5057245283875118983
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215396145127695974}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06693624, y: -0.16429815}
+  m_Size: {x: 1.9157491, y: 0.6910233}
+  m_Direction: 1

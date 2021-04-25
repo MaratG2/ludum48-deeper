@@ -12,18 +12,25 @@ public class Enemy : MonoBehaviour
 
     private Player player;
     private Rigidbody2D rb2d;
+    private SpriteRenderer spriteRenderer;
     private float maxDistance;
+
     private void Start()
     {
         startPos = transform.position;
         maxHP = hp;
         player = FindObjectOfType<Player>();
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         maxDistance = Vector2.Distance(transform.position, player.transform.position) + 2f;
     }
     private void FixedUpdate()
     {
         Navigate();
+    }
+    private void Update()
+    {
+        transform.right = player.transform.position - transform.position;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -49,7 +56,11 @@ public class Enemy : MonoBehaviour
                 pl.TakeDamage(damage);
                 pl.immunity = true;
                 Debug.Log("EnemyDamage");
-                pl.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                SpriteRenderer[] sprites = pl.GetComponentsInChildren<SpriteRenderer>();
+                foreach (var s in sprites)
+                {
+                    s.color = Color.red;
+                }
             }
         }
     }
@@ -58,7 +69,7 @@ public class Enemy : MonoBehaviour
         hp = maxHP;
         transform.position = startPos;
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        GetComponent<CircleCollider2D>().enabled = true;
+        GetComponent<CapsuleCollider2D>().enabled = true;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
@@ -66,7 +77,7 @@ public class Enemy : MonoBehaviour
     public void Death()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
         foreach (var rend in renderers)
