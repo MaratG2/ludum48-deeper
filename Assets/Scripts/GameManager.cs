@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float[] depthsSpawn;
     [SerializeField] private float[] maxTimeSpawn;
     [SerializeField] private float[] minTimeSpawn;
+    public float minDepth = 50f;
     public int depthCounter = 0;
     private int wasDepthCounter = 0;
     [SerializeField] private float harvestSpawnChance = 50f;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
         if (Application.targetFrameRate != 60)
             Application.targetFrameRate = 60;
 
-        if (player.depth < depthsSpawn[0])
+        if (player.depth > minDepth && player.depth < depthsSpawn[0])
         {
             depthCounter = 0;
         }

@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        transform.position = savePos;
+        savePos = transform.position;
     }
     void Update()
     {
