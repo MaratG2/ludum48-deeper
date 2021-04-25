@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform bulletPivotPoint;
+    public Transform bulletPivotPoint;
     [SerializeField] private float[] damage;
     [Range(0.2f, 5f)][SerializeField] private float[] shootDelay;
     [SerializeField] private float[] travelTime;

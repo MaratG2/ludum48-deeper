@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [Tooltip("Don't change")] [SerializeField] private float hp = 100f; //
     [Range(0, 3)] public int upgradeTier = 0;
     public int[] crystalls;
+    public bool isHarvesting;
+    public PlayerWeapon weapon;
+    public Crystal crystal;
     [SerializeField] private float immuneTime = 1f;
     private float immuneTimer = 0f;
     [HideInInspector] public bool immunity;
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour
     public Vector3 savePos;
     private float depthTimer = 0f;
     private float startY = 0f;
+   
 
     void Awake()
     {
