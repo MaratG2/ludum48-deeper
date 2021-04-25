@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Range(0.5f, 10f)] [SerializeField] private float horizontalSpeed = 1f;
     [Range(1f, 10f)] [SerializeField] private float verticalSpeed = 1f;
+    [SerializeField] private float smooth = 10f;
 
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     Vector3 object_pos;
     float angle;
     float angleBase;
+    float wasAdd = 0;
     float addAngle = 0f;
 
     void Awake()
@@ -68,10 +70,13 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1); //maybe need to delete
             addAngle = -180f;
         }
-
         angleBase = angle + addAngle;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
+        if (wasAdd == addAngle)
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, angleBase)), Time.deltaTime * smooth);
+        else
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
 
+        wasAdd = addAngle;
         return angle;
     }
 }
