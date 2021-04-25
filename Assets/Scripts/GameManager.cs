@@ -34,6 +34,28 @@ public class GameManager : MonoBehaviour
         if (Application.targetFrameRate != 60)
             Application.targetFrameRate = 60;
 
+        if (player.isHarvesting)
+        {
+            if (!isRandomedChance)
+            {
+                harvestChance = Random.Range(0f, 100f);
+                isRandomedChance = true;
+            }
+            else if (tempCrystal != player.crystal)
+            {
+                tempCrystal = player.crystal;
+                if (harvestChance >= harvestSpawnChance)
+                    SpawnEnemy();
+            }
+        }
+
+        if (player.depth < minDepth)
+        {
+            isRandomedTimer = false;
+            timerSpawn = 0f;
+            return;
+        }
+
         if (player.depth > minDepth && player.depth < depthsSpawn[0])
         {
             depthCounter = 0;
@@ -65,21 +87,6 @@ public class GameManager : MonoBehaviour
                 timerSpawn += Time.deltaTime;
             else
                 SpawnEnemy();
-        }
-
-        if (player.isHarvesting)
-        {
-            if (!isRandomedChance)
-            {
-                harvestChance = Random.Range(0f, 100f);
-                isRandomedChance = true;
-            }
-            else if (tempCrystal != player.crystal)
-            {
-                tempCrystal = player.crystal;
-                if (harvestChance >= harvestSpawnChance)
-                    SpawnEnemy();
-            }
         }
 
         wasDepthCounter = depthCounter;

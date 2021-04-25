@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     private float horizontalInput;
     private float horizontalInputRaw;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
     }
     void Start()
     {
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
         horizontalInputRaw = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        verticalInputPos = verticalInput * verticalSpeed;
+        animator.SetFloat("speed", Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
         if (Time.timeScale != 0f)
             angleMouse();
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(horizontalInput, verticalInputPos);
+        rb2d.velocity = new Vector2(horizontalInput * horizontalSpeed, verticalInput * verticalSpeed);
     }
 
     float angleMouse()

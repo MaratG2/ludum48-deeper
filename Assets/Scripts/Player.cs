@@ -39,9 +39,9 @@ public class Player : MonoBehaviour
     {
         savePos = transform.position;
     }
-    void Update()
+    void Update()   
     {
-        depth = -Mathf.FloorToInt((transform.position.y - startY) * 10);
+        depth = -Mathf.FloorToInt((transform.position.y - startY) * 2);
         if (depth < 0)
             depth = 0;
         textDepthCounter.text = depth.ToString();
@@ -117,11 +117,6 @@ public class Player : MonoBehaviour
     {
         hp = maxHP[upgradeTierHealth];
         transform.position = savePos;
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
-        foreach (var enemy in enemies)
-        {
-            //enemy.Restart();
-        }
         FindObjectOfType<GameManager>().timerSpawn = 0f;
         FindObjectOfType<GameManager>().isRandomedTimer = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -137,6 +132,11 @@ public class Player : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 crystalls[i] = 0;
+            }
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            foreach (var enemy in enemies)
+            {
+                Destroy(enemy);
             }
         }
     }
