@@ -13,45 +13,51 @@ public class Crystal : MonoBehaviour
     public bool resetting;
     private bool vanished;
     private Vector3 startPos;
+    private Player player;
     private void Awake()
     {
         circle = GetComponentInChildren<Image>();
         startPos = transform.position;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Player pl = collision.GetComponent<Player>();
-        if (!pl || vanished)
+        if (pl)
+            player = pl;
+    }
+    void Update()
+    {
+        if (!player || vanished)
         {
             timerHarvest = 0f;
             circle.fillAmount = timerHarvest / timeHarvest;
             return;
         }
         //RaycastHit2D hit = Physics2D.Raycast(pl.weapon.bulletPivotPoint.position * -pl.transform.localScale.x, pl.transform.right, 5f);
-        RaycastHit2D hit = Physics2D.Raycast(pl.transform.position, pl.transform.right * 5f * -pl.transform.localScale.x, 5f);
+        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.right * 5f * -player.transform.localScale.x, 5f);
         //if (hit)
             //Debug.Log("Hit: " + hit.collider.gameObject);
-        //Debug.DrawRay(pl.transform.position, pl.transform.right * 5f * -pl.transform.localScale.x, Color.red, 1f);
+        //Debug.DrawRay(player.transform.position, player.transform.right * 5f * -player.transform.localScale.x, Color.red, 1f);
         if (!hit)
         {
             timerHarvest = 0f;
             circle.fillAmount = timerHarvest / timeHarvest;
             return;
         }
-        Debug.Log(hit.collider.gameObject + " | " + gameObject + " | " + Input.GetMouseButton(0));
-        if (pl && hit.collider.gameObject == gameObject && Input.GetMouseButton(1))
+        //Debug.Log(hit.collider.gameObject + " | " + gameObject + " | " + Input.GetMouseButton(1));
+        if (player && hit.collider.gameObject == gameObject && Input.GetMouseButton(1))
         {
             if (timerHarvest < timeHarvest)
             {
                 timerHarvest += Time.deltaTime;
-                pl.crystal = this;
-                pl.isHarvesting = true;
+                player.crystal = this;
+                player.isHarvesting = true;
             }
             else
             {
-                pl.crystalls[crystalType] += quantity;
-                pl.isHarvesting = false;
-                pl.crystal = null;
+                player.crystalls[crystalType] += quantity;
+                player.isHarvesting = false;
+                player.crystal = null;
                 circle.fillAmount = timerHarvest / timeHarvest;
                 Vanish();
             }
@@ -59,7 +65,7 @@ public class Crystal : MonoBehaviour
         else
         {
             timerHarvest = 0f;
-            pl.isHarvesting = false;
+            player.isHarvesting = false;
         }
         circle.fillAmount = timerHarvest / timeHarvest;
     }
@@ -67,13 +73,17 @@ public class Crystal : MonoBehaviour
     {
         Player pl = collision.GetComponent<Player>();
         if (pl)
+        {
             timerHarvest = 0f;
+            player = null;
+        }
     }
 
     private void Vanish()
     {
         vanished = true;
         GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.layer = 2;
     }
 
     public void Reset()
@@ -81,5 +91,6 @@ public class Crystal : MonoBehaviour
         vanished = false;
         GetComponent<SpriteRenderer>().enabled = true;
         transform.position = startPos;
+        gameObject.layer = 8;
     }
 }

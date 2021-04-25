@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 mouse_pos;
     Vector3 object_pos;
-    float angle;
+    float angle = 0f;
     float angleBase;
     float wasAdd = 0;
     float addAngle = 0f;
@@ -54,41 +54,46 @@ public class PlayerController : MonoBehaviour
 
     float angleMouse()
     {
-        mouse_pos = Input.mousePosition;
-        mouse_pos.z = 5.23f; //The distance between the camera and object
-        object_pos = Camera.main.WorldToScreenPoint(transform.position);
-        mouse_pos.x = mouse_pos.x - object_pos.x;
-        mouse_pos.y = mouse_pos.y - object_pos.y;
-        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        //mouse_pos = Input.mousePosition;
+        //mouse_pos.z = 5.23f; //The distance between the camera and object
+        //object_pos = Camera.main.WorldToScreenPoint(transform.position);
+        //mouse_pos.x = mouse_pos.x - object_pos.x;
+        //mouse_pos.y = mouse_pos.y - object_pos.y;
+        //angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
 
-        if (angle >= -90f && angle <= 90f)
-        {
-            transform.localScale = new Vector3(-1, 1, 1); //maybe need to delete
-            addAngle = 0f;
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, 1); //maybe need to delete
-            addAngle = -180f;
-        }
-        angleBase = angle + addAngle;
+        Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction3 = (mouseScreenPosition - (Vector2)transform.position).normalized;
+        rb2d.angularVelocity = 0;
+        transform.right = Vector2.Lerp(transform.right, -direction3, Time.deltaTime * smoothCam);
 
-        if (wasAdd == addAngle)
-        {
+        //if (angle >= -90f && angle <= 90f)
+        //{
+        //    transform.localScale = new Vector3(-1, 1, 1); //maybe need to delete
+        //    addAngle = 0f;
+        //}
+        //else
+        //{
+        //    transform.localScale = new Vector3(1, 1, 1); //maybe need to delete
+        //    addAngle = -180f;
+        //}
+        //angleBase = angle + addAngle;
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, angleBase)), Time.deltaTime * smoothCam);
+        //if (wasAdd == addAngle)
+        //{
 
-            //Debug.Log(Quaternion.ToEulerAngles(transform.rotation).z);
-        }
-        else
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, 0, angleBase)), Time.deltaTime * smoothCam);
 
-        var direction = Quaternion.Euler(new Vector3(0, 0, angleBase)) * transform.right;
-        var direction2 = transform.rotation * transform.right;
-        Debug.DrawRay(transform.position, direction * 150f, Color.red, 1f);
-        Debug.DrawRay(transform.position, direction2 * 150f, Color.yellow, 1f);
+        //    //Debug.Log(Quaternion.ToEulerAngles(transform.rotation).z);
+        //}
+        //else
+        //    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBase));
 
-        wasAdd = addAngle;
+        //var direction = Quaternion.Euler(new Vector3(0, 0, angleBase)) * transform.right;
+        //var direction2 = transform.rotation * transform.right;
+        //Debug.DrawRay(transform.position, direction * 150f, Color.red, 1f);
+        //Debug.DrawRay(transform.position, direction2 * 150f, Color.yellow, 1f);
+
+        //wasAdd = addAngle;
 
         return angle;
     }

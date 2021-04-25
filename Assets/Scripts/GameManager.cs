@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             else if (tempCrystal != player.crystal)
             {
                 tempCrystal = player.crystal;
-                if (harvestChance >= harvestSpawnChance)
+                if (harvestChance <= harvestSpawnChance)
                     SpawnEnemy();
             }
         }

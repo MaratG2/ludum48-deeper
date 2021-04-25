@@ -84,6 +84,7 @@ public class Enemy : MonoBehaviour
         GetComponent<CapsuleCollider2D>().enabled = true;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        gameObject.layer = 9;
     }
 
     public void Death()
@@ -96,6 +97,7 @@ public class Enemy : MonoBehaviour
         {
             rend.enabled = false;
         }
+        gameObject.layer = 2;
     }
     private void Navigate()
     {
