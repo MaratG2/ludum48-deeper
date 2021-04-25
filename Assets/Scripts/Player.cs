@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         depth = -Mathf.FloorToInt((transform.position.y - startY)*depthMulti);
+        if (depth < 0)
+            depth = 0;
         textDepthCounter.text = depth.ToString();
         if (depth > maxDepth)
         {

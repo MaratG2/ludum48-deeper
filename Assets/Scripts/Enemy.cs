@@ -68,6 +68,11 @@ public class Enemy : MonoBehaviour
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         GetComponent<CircleCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        foreach (var rend in renderers)
+        {
+            rend.enabled = false;
+        }
     }
     private void Navigate()
     {
