@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737347921836501358}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.49, y: -3.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6dd6f8e29f86e4ca3fc7bf5d7b340c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
-  speed: 1
-  damage: 1
+  hp: 20
+  speed: 0.7
+  damage: 3
   startPos: {x: 0, y: 0, z: 0}
 --- !u!70 &1897389904516714639
 CapsuleCollider2D:
@@ -147,7 +147,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737347921836501358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c48080a7f25bc434680ebd827539dfbe, type: 2}
   m_CullingMode: 0

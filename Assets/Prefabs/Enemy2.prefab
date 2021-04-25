@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6dd6f8e29f86e4ca3fc7bf5d7b340c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 6
   speed: 1
   damage: 1
   startPos: {x: 0, y: 0, z: 0}

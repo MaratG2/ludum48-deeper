@@ -20,14 +20,27 @@ public class Good : MonoBehaviour
     public Image imageBuy;
     public void Update()
     {
-        textBuy.text = price[upgradeTier].ToString();
+        if (upgradeTier >= maxUpgrades)
+            return;
+        
+        if (price[upgradeTier] != 0)
+            textBuy.text = price[upgradeTier].ToString();
+        else
+            textBuy.transform.parent.gameObject.SetActive(false);
+
         imagePreview.sprite = imagesMain[upgradeTier];
-        imageBuy.sprite = imagesPrice[priceType[upgradeTier]];
+        if (price[upgradeTier] != 0)
+            imageBuy.sprite = imagesPrice[upgradeTier];
+        else
+            imageBuy.enabled = false;
         textDescr.text = descriptions[upgradeTier];
     }
     public void Buy()
     {
-        if(player.crystalls[priceType[upgradeTier]] >= price[upgradeTier] && upgradeTier < maxUpgrades)
+        if (upgradeTier >= maxUpgrades)
+            return;
+
+        if (player.crystalls[priceType[upgradeTier]] >= price[upgradeTier] && upgradeTier < maxUpgrades)
         {
             player.crystalls[priceType[upgradeTier]] -= price[upgradeTier];
             upgradeTier++;

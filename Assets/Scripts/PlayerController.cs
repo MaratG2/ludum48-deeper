@@ -36,18 +36,15 @@ public class PlayerController : MonoBehaviour
         horizontalInputRaw = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        if (verticalInput >= 0)
-            verticalInputPos = verticalInput * verticalSpeed;
-        else
-            verticalInputPos = 0;
+        verticalInputPos = verticalInput * verticalSpeed;
 
-        if(Time.timeScale != 0f)
+        if (Time.timeScale != 0f)
             angleMouse();
     }
 
     void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(horizontalInput, -0.5f + verticalInputPos);
+        rb2d.velocity = new Vector2(horizontalInput, verticalInputPos);
     }
 
     float angleMouse()

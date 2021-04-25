@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystalType: 0
-  quantity: 2
+  quantity: 10
   timeHarvest: 2
   timerHarvest: 0
   circle: {fileID: 0}
