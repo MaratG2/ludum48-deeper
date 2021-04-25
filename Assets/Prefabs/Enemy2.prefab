@@ -123,6 +123,7 @@ MonoBehaviour:
   speed: 0.1
   damage: 1
   startPos: {x: 0, y: 0, z: 0}
+  childSpriteRenderer: {fileID: 1591915272783976174}
 --- !u!70 &6243673610151928055
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

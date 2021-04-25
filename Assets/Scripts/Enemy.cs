@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private Player player;
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer childSpriteRenderer;
     private float maxDistance;
 
     private void Start()
@@ -32,9 +33,15 @@ public class Enemy : MonoBehaviour
     {
         transform.right = player.transform.position - transform.position;
         if (transform.position.x > player.transform.position.x)
+        {
             spriteRenderer.flipY = true;
+            childSpriteRenderer.flipY = true;
+        }
         else
+        {
             spriteRenderer.flipY = false;
+            childSpriteRenderer.flipY = false;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

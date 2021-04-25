@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 3696409744272389876}
   - component: {fileID: 3696409744272389879}
   m_Layer: 8
-  m_Name: Crystal
+  m_Name: Crystal1
   m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,9 +272,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystalType: 0
   quantity: 10
-  timeHarvest: 2
+  timeHarvest: 3
   timerHarvest: 0
   circle: {fileID: 0}
+  resetting: 0
 --- !u!50 &3696409744272389876
 Rigidbody2D:
   serializedVersion: 4
