@@ -31,6 +31,10 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         transform.right = player.transform.position - transform.position;
+        if (transform.position.x > player.transform.position.x)
+            spriteRenderer.flipY = true;
+        else
+            spriteRenderer.flipY = false;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

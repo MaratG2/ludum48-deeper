@@ -17,9 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float immuneTime = 1f;
     private float immuneTimer = 0f;
     [HideInInspector] public bool immunity;
-    [SerializeField] private int depth = 0;
+    public int depth = 0;
     [SerializeField] private int[] maxDepth;
-    [SerializeField] private int depthMulti = 10;
     [SerializeField] private float depthDamage = 10f;
     [SerializeField] private float depthTime = 1f;
     [SerializeField] private Image hpBar;
@@ -42,7 +41,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        depth = -Mathf.FloorToInt((transform.position.y - startY)*depthMulti);
+        depth = -Mathf.FloorToInt((transform.position.y - startY) * 10);
         if (depth < 0)
             depth = 0;
         textDepthCounter.text = depth.ToString();

@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject shop;
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private float maxTimeSpawn = 50f;
-    [SerializeField] private float minTimeSpawn = 10f;
+    [SerializeField] private GameObject[] enemyPrefab;
+    [SerializeField] private float[] depthsSpawn;
+    [SerializeField] private float[] maxTimeSpawn;
+    [SerializeField] private float[] minTimeSpawn;
+    public int depthCounter = 0;
+    private int wasDepthCounter = 0;
     [SerializeField] private float harvestSpawnChance = 50f;
     [SerializeField] private float spawnX = 2.8f;
     [SerializeField] private float spawnYShift = 10f;
@@ -30,9 +33,29 @@ public class GameManager : MonoBehaviour
         if (Application.targetFrameRate != 60)
             Application.targetFrameRate = 60;
 
+        if (player.depth < depthsSpawn[0])
+        {
+            depthCounter = 0;
+        }
+        else if (player.depth >= depthsSpawn[0] && player.depth < depthsSpawn[1])
+        {
+            depthCounter = 1;
+        }
+        else if (player.depth >= depthsSpawn[1] && player.depth < depthsSpawn[2])
+        {
+            depthCounter = 2;
+        }
+        else if (player.depth >= depthsSpawn[2])
+        {
+            depthCounter = 3;
+        }
+
+        if (depthCounter != wasDepthCounter)
+            isRandomedTimer = false;
+
         if (!isRandomedTimer)
         {
-            timeSpawn = Random.Range(minTimeSpawn, maxTimeSpawn);
+            timeSpawn = Random.Range(minTimeSpawn[depthCounter], maxTimeSpawn[depthCounter]);
             isRandomedTimer = true;
         }
         else
@@ -40,23 +63,25 @@ public class GameManager : MonoBehaviour
             if (timerSpawn < timeSpawn)
                 timerSpawn += Time.deltaTime;
             else
-                SpawnEnemy(); 
+                SpawnEnemy();
         }
 
-        if(player.isHarvesting)
+        if (player.isHarvesting)
         {
-            if(!isRandomedChance)
+            if (!isRandomedChance)
             {
                 harvestChance = Random.Range(0f, 100f);
                 isRandomedChance = true;
             }
-            else if(tempCrystal != player.crystal)
+            else if (tempCrystal != player.crystal)
             {
                 tempCrystal = player.crystal;
                 if (harvestChance >= harvestSpawnChance)
                     SpawnEnemy();
             }
         }
+
+        wasDepthCounter = depthCounter;
     }
 
     public void OpenShop()
@@ -76,6 +101,6 @@ public class GameManager : MonoBehaviour
         timerSpawn = 0f;
         isRandomedTimer = false;
         Vector2 spawnPos = new Vector2(spawnX, player.transform.position.y - spawnYShift); 
-        GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyPrefab[depthCounter], spawnPos, Quaternion.identity);
     }
 }

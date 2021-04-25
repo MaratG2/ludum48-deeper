@@ -585,10 +585,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 590869802}
-  enemyPrefab: {fileID: 6215396145127695974, guid: 8b62b1061af5630498beb105c1b416c2,
-    type: 3}
-  maxTimeSpawn: 50
-  minTimeSpawn: 10
+  enemyPrefab:
+  - {fileID: 6215396145127695974, guid: 8b62b1061af5630498beb105c1b416c2, type: 3}
+  - {fileID: 5101039091283679510, guid: 8f35950f027a1674fae5ec23686e99b6, type: 3}
+  - {fileID: 8570900651120443472, guid: 3e2c73d39e699f740bf410706804073b, type: 3}
+  - {fileID: 737347921836501358, guid: 43938f6de97b20140826186c68620492, type: 3}
+  depthsSpawn:
+  - 250
+  - 500
+  - 750
+  - 1000
+  maxTimeSpawn:
+  - 30
+  - 35
+  - 45
+  - 50
+  minTimeSpawn:
+  - 10
+  - 20
+  - 15
+  - 25
+  depthCounter: 0
   harvestSpawnChance: 10
   spawnX: 2.8
   spawnYShift: 10
@@ -9148,7 +9165,6 @@ MonoBehaviour:
   immunity: 0
   depth: 0
   maxDepth: 960000002c010000c201000058020000ee020000e8030000
-  depthMulti: 10
   depthDamage: 1
   depthTime: 1
   hpBar: {fileID: 1121857426}

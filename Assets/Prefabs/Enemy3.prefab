@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 12
-  speed: 0.8
+  speed: 0.08
   damage: 2
   startPos: {x: 0, y: 0, z: 0}
 --- !u!70 &7394489117850778033
