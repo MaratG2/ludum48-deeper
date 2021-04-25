@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
 {
     [Range(0f, 100f)] [SerializeField] private float[] maxHP;
     [Tooltip("Don't change")] [SerializeField] private float hp = 100f; //
-    [Range(0, 3)] public int upgradeTier = 0;
+    [Range(0, 4)] public int upgradeTierHealth = 0;
+    [Range(0, 5)] public int upgradeTierDepth = 0;
     public int[] crystalls;
     public bool isHarvesting;
     public PlayerWeapon weapon;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     private float immuneTimer = 0f;
     [HideInInspector] public bool immunity;
     [SerializeField] private int depth = 0;
-    [SerializeField] private int maxDepth = 10;
+    [SerializeField] private int[] maxDepth;
     [SerializeField] private int depthMulti = 10;
     [SerializeField] private float depthDamage = 10f;
     [SerializeField] private float depthTime = 1f;
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        hp = maxHP[upgradeTier];
+        hp = maxHP[upgradeTierHealth];
         startY = transform.position.y;
     }
     void Start()
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
         if (depth < 0)
             depth = 0;
         textDepthCounter.text = depth.ToString();
-        if (depth > maxDepth)
+        if (depth > maxDepth[upgradeTierDepth])
         {
             if (depthTimer < depthTime)
                 depthTimer += Time.deltaTime;
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        hpBar.fillAmount = hp / maxHP[upgradeTier];
+        hpBar.fillAmount = hp / maxHP[upgradeTierHealth];
 
         if(Input.GetKeyDown(KeyCode.R))
             TakeDamage(1000f);
@@ -115,7 +116,7 @@ public class Player : MonoBehaviour
 
     private void Restart()
     {
-        hp = maxHP[upgradeTier];
+        hp = maxHP[upgradeTierHealth];
         transform.position = savePos;
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach (var enemy in enemies)

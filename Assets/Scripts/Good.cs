@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class Good : MonoBehaviour
 {
+    public int goodType = 0;
     public int[] price;
     public int[] priceType;
     public string[] descriptions;
@@ -43,6 +44,18 @@ public class Good : MonoBehaviour
         if (player.crystalls[priceType[upgradeTier]] >= price[upgradeTier] && upgradeTier < maxUpgrades)
         {
             player.crystalls[priceType[upgradeTier]] -= price[upgradeTier];
+            switch(goodType)
+            {
+                case 0:
+                    player.upgradeTierHealth++;
+                    break;
+                case 1:
+                    player.upgradeTierDepth++;
+                    break;
+                case 2:
+                    player.weapon.upgradeTier++;
+                    break;
+            }
             upgradeTier++;
         }
     }

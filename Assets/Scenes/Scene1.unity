@@ -416,6 +416,11 @@ PrefabInstance:
       propertyPath: maxUpgrades
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8646559865035103492, guid: 231a63e829c3fd54b9d36765c4e27781,
+        type: 3}
+      propertyPath: goodType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 231a63e829c3fd54b9d36765c4e27781, type: 3}
 --- !u!224 &91016583 stripped
@@ -9111,6 +9116,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a494680284938b04393ab63055d3f58e, type: 3}
   - {fileID: 21300000, guid: 04e2088942b24804fa938b5b8688bb52, type: 3}
   - {fileID: 21300000, guid: 749951ba9c6411a409fae4d64dffa6b5, type: 3}
+  - {fileID: 8094244592334985341, guid: 952f320384ffc3d4fa5f7c5b2c08db17, type: 3}
   keyShoot: 323
   upgradeTier: 0
 --- !u!114 &930671355
@@ -9132,7 +9138,8 @@ MonoBehaviour:
   - 6
   - 7
   hp: 10
-  upgradeTier: 0
+  upgradeTierHealth: 0
+  upgradeTierDepth: 0
   crystalls: e7030000e7030000e7030000
   isHarvesting: 0
   weapon: {fileID: 930671354}
@@ -9140,7 +9147,7 @@ MonoBehaviour:
   immuneTime: 1
   immunity: 0
   depth: 0
-  maxDepth: 100
+  maxDepth: 960000002c010000c201000058020000ee020000e8030000
   depthMulti: 10
   depthDamage: 1
   depthTime: 1
@@ -9710,6 +9717,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 999d31331706b7a4fbed24d1df3227fa,
         type: 3}
+    - target: {fileID: 8646559865035103492, guid: 231a63e829c3fd54b9d36765c4e27781,
+        type: 3}
+      propertyPath: goodType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8646559865925939983, guid: 231a63e829c3fd54b9d36765c4e27781,
         type: 3}
       propertyPath: m_textInfo.characterCount

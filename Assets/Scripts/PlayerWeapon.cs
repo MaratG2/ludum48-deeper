@@ -13,7 +13,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Sprite[] bulletSprites;
     [SerializeField] KeyCode keyShoot;
 
-    [Range(0, 3)] public int upgradeTier = 0;
+    [Range(0, 4)] public int upgradeTier = 0;
 
     private bool canShoot = true;
 
