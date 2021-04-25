@@ -100,8 +100,9 @@ public class Enemy : MonoBehaviour
     private void Navigate()
     {
         Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
+        
         //Debug.Log("1: " + (Mathf.Log(Mathf.Abs(Mathf.Log(Mathf.Abs(maxDistance - Vector2.Distance(transform.position, player.transform.position)))))).ToString());
         //rb2d.AddForce(speed * dir * Mathf.Abs(Mathf.Log(Mathf.Abs(Mathf.Log(Mathf.Abs(maxDistance - Vector2.Distance(transform.position, player.transform.position)))))));
-        rb2d.AddForce(speed * dir);
+        rb2d.velocity = speed * dir.normalized * 35f;
     }
 }

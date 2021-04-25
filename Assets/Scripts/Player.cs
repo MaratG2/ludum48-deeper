@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
             Enemy[] enemies = FindObjectsOfType<Enemy>();
             foreach (var enemy in enemies)
             {
-                Destroy(enemy);
+                Destroy(enemy.gameObject);
             }
         }
     }
