@@ -10,14 +10,18 @@ public class Crystal : MonoBehaviour
     public float timeHarvest = 2f;
     public float timerHarvest = 0f;
     public Image circle;
+    public bool resetting;
+    private bool vanished;
+    private Vector3 startPos;
     private void Awake()
     {
         circle = GetComponentInChildren<Image>();
+        startPos = transform.position;
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         Player pl = collision.GetComponent<Player>();
-        if (!pl)
+        if (!pl || vanished)
         {
             timerHarvest = 0f;
             circle.fillAmount = timerHarvest / timeHarvest;
@@ -49,7 +53,7 @@ public class Crystal : MonoBehaviour
                 pl.isHarvesting = false;
                 pl.crystal = null;
                 circle.fillAmount = timerHarvest / timeHarvest;
-                Destroy(gameObject);
+                Vanish();
             }
         }
         else
@@ -64,5 +68,18 @@ public class Crystal : MonoBehaviour
         Player pl = collision.GetComponent<Player>();
         if (pl)
             timerHarvest = 0f;
+    }
+
+    private void Vanish()
+    {
+        vanished = true;
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void Reset()
+    {
+        vanished = false;
+        GetComponent<SpriteRenderer>().enabled = true;
+        transform.position = startPos;
     }
 }

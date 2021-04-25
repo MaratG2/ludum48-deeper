@@ -9140,7 +9140,7 @@ MonoBehaviour:
   hp: 10
   upgradeTierHealth: 0
   upgradeTierDepth: 0
-  crystalls: e7030000e7030000e7030000
+  crystalls: 000000000000000000000000
   isHarvesting: 0
   weapon: {fileID: 930671354}
   crystal: {fileID: 0}
@@ -12028,6 +12028,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696409744272389877, guid: eed30aab5e644bb4cb43af2c564cc394,
+        type: 3}
+      propertyPath: resetting
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3696409744272389878, guid: eed30aab5e644bb4cb43af2c564cc394,
         type: 3}

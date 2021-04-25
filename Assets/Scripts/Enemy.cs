@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         {
             if (!pl.immunity)
             {
-                pl.TakeDamage(damage);
+                pl.TakeDamage(damage, true);
                 pl.immunity = true;
                 Debug.Log("EnemyDamage");
                 pl.GetComponentInChildren<SpriteRenderer>().color = Color.red;
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         {
             if (!pl.immunity)
             {
-                pl.TakeDamage(damage);
+                pl.TakeDamage(damage, true);
                 pl.immunity = true;
                 Debug.Log("EnemyDamage");
                 SpriteRenderer[] sprites = pl.GetComponentsInChildren<SpriteRenderer>();

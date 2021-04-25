@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
                 depthTimer += Time.deltaTime;
             else
             {
-                TakeDamage(depthDamage);
+                TakeDamage(depthDamage, true);
                 textDepth.gameObject.SetActive(true);
                 Debug.Log("DepthDamage");
                 depthTimer = 0f;
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         hpBar.fillAmount = hp / maxHP[upgradeTierHealth];
 
         if(Input.GetKeyDown(KeyCode.R))
-            TakeDamage(1000f);
+            TakeDamage(1000f, false);
 
         for(int i = 0; i < 3; i++)
         {
@@ -104,17 +104,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool death)
     {
         if (hp <= 0) return;
 
         hp -= damage;
 
         if(hp <= 0)
-            StartCoroutine(Death());
+            StartCoroutine(Death(death));
     }
 
-    private void Restart()
+    private void Restart(bool death)
     {
         hp = maxHP[upgradeTierHealth];
         transform.position = savePos;
@@ -126,11 +126,25 @@ public class Player : MonoBehaviour
         FindObjectOfType<GameManager>().timerSpawn = 0f;
         FindObjectOfType<GameManager>().isRandomedTimer = false;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        if(death)
+        {
+            Crystal[] cs = FindObjectsOfType<Crystal>();
+            foreach (var c in cs)
+            {
+                if (c.resetting)
+                    c.Reset();
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                crystalls[i] = 0;
+            }
+        }
     }
 
-    private IEnumerator Death()
+    private IEnumerator Death(bool death)
     {
-        Restart();
+        Restart(death);
         yield return null;
     }
 }

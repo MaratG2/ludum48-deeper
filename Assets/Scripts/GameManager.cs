@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         shop.SetActive(false);
         Time.timeScale = 1f;
-        FindObjectOfType<Player>().TakeDamage(1000f);
+        FindObjectOfType<Player>().TakeDamage(1000f, false);
     }
 
     public void SpawnEnemy()
