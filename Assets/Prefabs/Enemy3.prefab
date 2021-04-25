@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6dd6f8e29f86e4ca3fc7bf5d7b340c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 12
-  speed: 0.08
+  hp: 6
+  speed: 0.06
   damage: 2
   startPos: {x: 0, y: 0, z: 0}
   childSpriteRenderer: {fileID: 2750822220759846824}

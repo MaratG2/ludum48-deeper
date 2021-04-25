@@ -38536,23 +38536,23 @@ MonoBehaviour:
   - 4
   - 5
   shootDelay:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
   travelTime:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
   travelSpeed:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
   bulletSprites:
   - {fileID: 21300000, guid: 717a561679f0c4f4f9a9af7d345383e3, type: 3}
   - {fileID: 21300000, guid: a494680284938b04393ab63055d3f58e, type: 3}
@@ -40051,7 +40051,7 @@ PrefabInstance:
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
@@ -43193,7 +43193,7 @@ PrefabInstance:
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
@@ -44181,7 +44181,7 @@ PrefabInstance:
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
