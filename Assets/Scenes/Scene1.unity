@@ -38719,7 +38719,7 @@ MonoBehaviour:
   immuneTime: 1
   immunity: 0
   depth: 0
-  maxDepth: 960000005e010000c201000058020000ee020000e8030000
+  maxDepth: 960000005e010000f4010000bc02000084030000e8030000
   depthDamage: 1
   depthTime: 1
   hpBar: {fileID: 1121857426}
