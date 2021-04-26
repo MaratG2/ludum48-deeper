@@ -40,6 +40,13 @@ public class Player : MonoBehaviour
     public AudioSource damageAudioSource;
     public AudioClip[] takeDamageSound;
     public AudioClip collideSound;
+    public AudioClip[] randomSounds;
+    public float depthRandomSounds = 350f;
+    public float minTimeRandomSound = 10f;
+    public float maxTimeRandomSound = 30f;
+    private float timerRandomSound = 0f;
+    private float timeRandomSound = 0f;
+    private bool setTimer;
     private Animator animator;
     public bool inCr;
 
@@ -59,11 +66,13 @@ public class Player : MonoBehaviour
         if (depth < 0)
             depth = 0;
 
+        //FLASHLIGHT
         if (isFlashlightOn)
             flashlightObject.SetActive(true);
         else
             flashlightObject.SetActive(false);
 
+        //DEPTH
         textDepthCounter.text = depth.ToString();
         if (depth > maxDepth[upgradeTierDepth])
         {
@@ -84,11 +93,36 @@ public class Player : MonoBehaviour
             textDepth.gameObject.SetActive(false);
         }
 
+        //RANDOM SOUNDS
+        if(depth >= depthRandomSounds)
+        {
+            if(!setTimer)
+            {
+                timerRandomSound = Random.Range(minTimeRandomSound, maxTimeRandomSound);
+                setTimer = true;
+            }
+            else
+            {
+                if (timeRandomSound < timerRandomSound)
+                    timeRandomSound += Time.deltaTime;
+                else
+                {
+                    if(randomSounds.Length != 0)
+                        damageAudioSource.PlayOneShot(randomSounds[Mathf.FloorToInt(Random.Range(0f, randomSounds.Length - 0.01f))]);
+                    
+                    timeRandomSound = 0f;
+                    setTimer = false;
+                }
+            }
+        }
+
+        //ANIMS
         if (animator.GetFloat("speed") > 0 && !moveAudioSource.isPlaying)
             moveAudioSource.Play();
         else if(animator.GetFloat("speed") == 0)
             moveAudioSource.Pause();
 
+        //IMMUNITY
         if (immunity)
         {
             if (immuneTimer < immuneTime)
@@ -109,8 +143,8 @@ public class Player : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.R))
         //    TakeDamage(1000, false);
 
+        //UI
         hpBar.fillAmount = hp / maxHP[upgradeTierHealth];
-
         for(int i = 0; i < 3; i++)
         {
             resQs[i].text = crystalls[i].ToString();
@@ -120,6 +154,7 @@ public class Player : MonoBehaviour
                 resQs[i].transform.parent.gameObject.SetActive(false);
         }
 
+        //POST
         wasImmunity = immunity;
     }
 
@@ -141,7 +176,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage, bool death)
     {
         if(death)
-            damageAudioSource.PlayOneShot(takeDamageSound[Mathf.FloorToInt(Random.Range(0f, 2.99f))]);
+            damageAudioSource.PlayOneShot(takeDamageSound[Mathf.FloorToInt(Random.Range(0f, takeDamageSound.Length - 0.01f))]);
         
         hp -= damage;
 
