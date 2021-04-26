@@ -94,28 +94,7 @@ public class Player : MonoBehaviour
             textDepth.gameObject.SetActive(false);
         }
 
-        //RANDOM SOUNDS
-        if(depth >= depthRandomSounds)
-        {
-            if(!setTimer)
-            {
-                timerRandomSound = Random.Range(minTimeRandomSound, maxTimeRandomSound);
-                setTimer = true;
-            }
-            else
-            {
-                if (timeRandomSound < timerRandomSound)
-                    timeRandomSound += Time.deltaTime;
-                else
-                {
-                    if(randomSounds.Length != 0)
-                        damageAudioSource.PlayOneShot(randomSounds[Mathf.FloorToInt(Random.Range(0f, randomSounds.Length - 0.01f))]);
-                    
-                    timeRandomSound = 0f;
-                    setTimer = false;
-                }
-            }
-        }
+        
 
         //ANIMS
         if (animator.GetFloat("speed") > 0 && !moveAudioSource.isPlaying)
@@ -157,6 +136,29 @@ public class Player : MonoBehaviour
 
         //POST
         wasImmunity = immunity;
+
+        //RANDOM SOUNDS
+        if (depth >= depthRandomSounds)
+        {
+            if (!setTimer)
+            {
+                timerRandomSound = Random.Range(minTimeRandomSound, maxTimeRandomSound);
+                setTimer = true;
+            }
+            else
+            {
+                if (timeRandomSound < timerRandomSound)
+                    timeRandomSound += Time.deltaTime;
+                else
+                {
+                    if (randomSounds.Length != 0)
+                        damageAudioSource.PlayOneShot(randomSounds[Mathf.FloorToInt(Random.Range(0f, randomSounds.Length - 0.01f))]);
+
+                    timeRandomSound = 0f;
+                    setTimer = false;
+                }
+            }
+        }
     }
 
     private IEnumerator PushBack()
