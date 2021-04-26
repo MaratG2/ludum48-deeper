@@ -593,9 +593,10 @@ GameObject:
   m_Component:
   - component: {fileID: 68699102}
   - component: {fileID: 68699103}
+  - component: {fileID: 68699104}
   m_Layer: 0
   m_Name: Invisible Obstacle
-  m_TagString: Ignore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,6 +641,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 28.517075, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &68699104
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68699101}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!224 &91016583 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6914955447426673796, guid: af2b8c5996a8ead44a42a313bf06f474,
@@ -1089,6 +1111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298569446}
   - component: {fileID: 298569447}
+  - component: {fileID: 298569448}
   m_Layer: 11
   m_Name: Obstacle Enemy
   m_TagString: Ignore
@@ -1136,6 +1159,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 28.517075, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &298569448
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298569445}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &301423046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3696409744272389771, guid: eed30aab5e644bb4cb43af2c564cc394,
