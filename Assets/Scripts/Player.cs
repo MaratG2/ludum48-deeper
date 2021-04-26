@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [Range(0, 5)] public int upgradeTierDepth = 0;
     public bool isFlashlightOn;
     [SerializeField] private GameObject flashlightObject;
+    public float knockbackForce = 8000f;
     public int[] crystalls;
     public bool isHarvesting;
     public PlayerWeapon weapon;
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
             else
             {
                 TakeDamage(depthDamage, true);
+                StartCoroutine(PushBack());    
                 Debug.Log("DepthDamage");
                 depthTimer = 0f;
             }
@@ -119,6 +121,15 @@ public class Player : MonoBehaviour
         }
 
         wasImmunity = immunity;
+    }
+
+    private IEnumerator PushBack()
+    {
+        GetComponent<PlayerController>().movementBlock = true;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().AddForce(knockbackForce * Vector2.up, ForceMode2D.Impulse);
+        yield return new WaitForSecondsRealtime(0.5f);
+        GetComponent<PlayerController>().movementBlock = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

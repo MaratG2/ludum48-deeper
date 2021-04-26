@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [Range(1f, 10f)] [SerializeField] private float verticalSpeed = 1f;
     [SerializeField] private float smoothCam = 10f;
     [SerializeField] private float smoothIntert = 10f;
-
+    public bool movementBlock;
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -49,7 +49,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2d.velocity = Vector2.Lerp(rb2d.velocity, new Vector2(horizontalInput * horizontalSpeed, verticalInput * verticalSpeed), Time.fixedDeltaTime * smoothIntert);
+        if(!movementBlock)
+            rb2d.velocity = Vector2.Lerp(rb2d.velocity, new Vector2(horizontalInput * horizontalSpeed, verticalInput * verticalSpeed), Time.fixedDeltaTime * smoothIntert);
     }
 
     float angleMouse()
