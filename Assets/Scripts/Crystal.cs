@@ -38,10 +38,11 @@ public class Crystal : MonoBehaviour
             return;
         }
         //RaycastHit2D hit = Physics2D.Raycast(pl.weapon.bulletPivotPoint.position * -pl.transform.localScale.x, pl.transform.right, 5f);
-        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.right * 5f * -player.transform.localScale.x, 5f);
+        RaycastHit2D hit = Physics2D.Raycast(player.lasetPoint.transform.position, player.lasetPoint.transform.right * 5f * -player.transform.localScale.x, 5f);
+        //RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.right * 5f * -player.transform.localScale.x, 5f);
         //if (hit)
             //Debug.Log("Hit: " + hit.collider.gameObject);
-        //Debug.DrawRay(player.transform.position, player.transform.right * 5f * -player.transform.localScale.x, Color.red, 1f);
+        Debug.DrawRay(player.lasetPoint.transform.position, player.lasetPoint.transform.right * 5f * -player.transform.localScale.x, Color.red, 1f);
         if (!hit)
         {
             timerHarvest = 0f;

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [Range(0, 4)] public int upgradeTierHealth = 0;
     [Range(0, 5)] public int upgradeTierDepth = 0;
     public bool isFlashlightOn;
+    public Transform lasetPoint;
     [SerializeField] private GameObject flashlightObject;
     public float knockbackForce = 8000f;
     public int[] crystalls;

@@ -874,6 +874,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649196116}
     m_Modifications:
+    - target: {fileID: 5170280060066652308, guid: 2c07922e80a9a394490bb2a87ba1e4ff,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170280060066652308, guid: 2c07922e80a9a394490bb2a87ba1e4ff,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.87
+      objectReference: {fileID: 0}
     - target: {fileID: 5170280060066652309, guid: 2c07922e80a9a394490bb2a87ba1e4ff,
         type: 3}
       propertyPath: m_Name
@@ -37770,6 +37780,16 @@ PrefabInstance:
       propertyPath: resetting
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9116057833716528058, guid: 2e157c97a59808344bfa02c8fd141206,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116057833716528058, guid: 2e157c97a59808344bfa02c8fd141206,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.22
+      objectReference: {fileID: 0}
     - target: {fileID: 9116057833716528059, guid: 2e157c97a59808344bfa02c8fd141206,
         type: 3}
       propertyPath: m_Name
@@ -38625,6 +38645,7 @@ Transform:
   - {fileID: 642909107}
   - {fileID: 1541677548}
   - {fileID: 1686002458}
+  - {fileID: 1077627754}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38753,6 +38774,7 @@ MonoBehaviour:
   upgradeTierHealth: 0
   upgradeTierDepth: 0
   isFlashlightOn: 0
+  lasetPoint: {fileID: 1077627754}
   flashlightObject: {fileID: 642909106}
   knockbackForce: 8000
   crystalls: 000000000000000000000000
@@ -39439,6 +39461,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 973421292}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1077627753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077627754}
+  m_Layer: 2
+  m_Name: LaserPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1077627754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077627753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.987, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 930671350}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081650259
 GameObject:
