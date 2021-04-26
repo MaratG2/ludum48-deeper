@@ -9,12 +9,15 @@ public class Bullet : MonoBehaviour
     public float damage;
     public float travelTime;
     public float travelSpeed;
+    private AudioSource audioSource;
+    public AudioClip explodeSound;
 
     private float timer = 0f;
 
     void Start()
     {
         GetComponent<Rigidbody2D>().AddForce(transform.right * travelSpeed * transform.localScale.x, ForceMode2D.Impulse);
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -37,6 +40,7 @@ public class Bullet : MonoBehaviour
     void Vanish()
     {
         ParticleSystem ps = Instantiate(particlesExplosion, transform.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(explodeSound, transform.position);
         ps.Play();
         Destroy(gameObject);
     }

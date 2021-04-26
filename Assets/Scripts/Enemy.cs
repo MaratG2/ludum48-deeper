@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float incomeDamage)
     {
         hp -= incomeDamage;
-        audioSource.PlayOneShot(takeDamageSound);
+        //audioSource.PlayOneShot(takeDamageSound);
         if (hp <= 0)
             Death();
     }

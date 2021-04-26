@@ -40,8 +40,8 @@ public class EffectorScript : MonoBehaviour
                     break;
                 case 3:
                     gr.active = true;
-                    gr.intensity.value = 0.5f;
-                    gr.size.value = 1.5f;
+                    gr.intensity.value = 0.4f;
+                    gr.size.value = 1.3f;
                     //hard
                     break;
             }
