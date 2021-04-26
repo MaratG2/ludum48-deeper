@@ -14,16 +14,20 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer childSpriteRenderer;
+    private AudioSource audioSource;
     private float maxDistance;
-
     private void Start()
     {
         startPos = transform.position;
         maxHP = hp;
+        audioSource = GetComponent<AudioSource>();
         player = FindObjectOfType<Player>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         maxDistance = Vector2.Distance(transform.position, player.transform.position) + 2f;
+
+        if(audioSource)
+            audioSource.Play();
     }
     private void FixedUpdate()
     {
