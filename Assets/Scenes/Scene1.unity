@@ -1113,9 +1113,9 @@ GameObject:
   - component: {fileID: 325187809}
   - component: {fileID: 325187808}
   - component: {fileID: 325187807}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Instance (1)
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1346,10 +1346,10 @@ MonoBehaviour:
   - {fileID: 8570900651120443472, guid: 3e2c73d39e699f740bf410706804073b, type: 3}
   - {fileID: 737347921836501358, guid: 43938f6de97b20140826186c68620492, type: 3}
   depthsSpawn:
-  - 150
-  - 300
-  - 450
-  - 600
+  - 200
+  - 400
+  - 700
+  - 1000
   maxTimeSpawn:
   - 15
   - 20
@@ -1558,7 +1558,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicState: 0
-  audioSources: []
+  audioSources:
+  - {fileID: 1465676036}
+  - {fileID: 325187810}
+  - {fileID: 1187290404}
+  - {fileID: 1456314854}
+  - {fileID: 726911773}
 --- !u!4 &366620162
 Transform:
   m_ObjectHideFlags: 0
@@ -36969,6 +36974,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Station (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8336002037809410301, guid: c441da76f0f1e7c41acc9fa40d6041c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
+      objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37142,8 +37152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642909106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.77, y: 0.12, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -12.86, y: 0.12, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 987159838}
   - {fileID: 1415442292}
@@ -37363,6 +37373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Effector (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066057982995922702, guid: 3da2adad6050e8d42bb311b7b502733f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da2adad6050e8d42bb311b7b502733f, type: 3}
@@ -37810,9 +37825,9 @@ GameObject:
   - component: {fileID: 726911772}
   - component: {fileID: 726911771}
   - component: {fileID: 726911770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Instance (4)
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39129,7 +39144,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 545c755c943d8164792a389a0d3e3216, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -40229,9 +40244,9 @@ GameObject:
   - component: {fileID: 1187290403}
   - component: {fileID: 1187290402}
   - component: {fileID: 1187290401}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Instance (2)
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40571,6 +40586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Station (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336002037809410301, guid: c441da76f0f1e7c41acc9fa40d6041c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
       objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
@@ -41836,7 +41856,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7761194, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -41909,8 +41929,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415442291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.43, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.293, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 642909107}
   m_RootOrder: 1
@@ -41955,7 +41975,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16db3e47e2df4f049ad28efbf5f9fa1a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -42239,9 +42259,9 @@ GameObject:
   - component: {fileID: 1456314853}
   - component: {fileID: 1456314852}
   - component: {fileID: 1456314851}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Instance (3)
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42429,9 +42449,9 @@ GameObject:
   - component: {fileID: 1465676039}
   - component: {fileID: 1465676038}
   - component: {fileID: 1465676037}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Instance
-  m_TagString: Untagged
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42742,6 +42762,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Station (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336002037809410301, guid: c441da76f0f1e7c41acc9fa40d6041c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
       objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
@@ -43137,6 +43162,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Effector (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066057982995922702, guid: 3da2adad6050e8d42bb311b7b502733f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da2adad6050e8d42bb311b7b502733f, type: 3}
@@ -44231,6 +44261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Station (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8336002037809410301, guid: c441da76f0f1e7c41acc9fa40d6041c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
+      objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -44476,6 +44511,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Station (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336002037809410301, guid: c441da76f0f1e7c41acc9fa40d6041c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
       objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
@@ -45093,6 +45133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Station (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8336002037809410301, guid: c441da76f0f1e7c41acc9fa40d6041c4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
+      objectReference: {fileID: 0}
     - target: {fileID: 8336002037809410302, guid: c441da76f0f1e7c41acc9fa40d6041c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -45226,6 +45271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Effector
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066057982995922702, guid: 3da2adad6050e8d42bb311b7b502733f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ignore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da2adad6050e8d42bb311b7b502733f, type: 3}
