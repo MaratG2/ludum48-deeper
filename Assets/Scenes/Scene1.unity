@@ -14456,9 +14456,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 740302601
+  m_SortingLayer: -1
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.06722689, y: 0.063025236, z: 0}
   m_MaxChunkCount: 16
@@ -40958,7 +40958,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7761194, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -41018,7 +41018,7 @@ GameObject:
   - component: {fileID: 1415442293}
   m_Layer: 2
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41293,7 +41293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454955369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.13, y: -113.23, z: 0}
+  m_LocalPosition: {x: -8.13, y: -113.24, z: 0}
   m_LocalScale: {x: 129.54802, y: 65.61228, z: 1}
   m_Children: []
   m_Father: {fileID: 422880304}
