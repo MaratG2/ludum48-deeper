@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
     void Update()
     {
@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     float angleMouse()
     {
+        rb2d.angularVelocity = 0;
+
         //mouse_pos = Input.mousePosition;
         //mouse_pos.z = 5.23f; //The distance between the camera and object
         //object_pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -61,10 +63,15 @@ public class PlayerController : MonoBehaviour
         //mouse_pos.y = mouse_pos.y - object_pos.y;
         //angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
 
-        Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction3 = (mouseScreenPosition - (Vector2)transform.position).normalized;
-        rb2d.angularVelocity = 0;
-        transform.right = Vector2.Lerp(transform.right, -direction3, Time.deltaTime * smoothCam);
+        //Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 direction3 = (mouseScreenPosition - (Vector2)transform.position).normalized;  
+        //transform.right = Vector2.Lerp(transform.right, -direction3, Time.deltaTime * smoothCam);
+        //Debug.Log(transform.right.x == -1f && transform.right.y == 0f);
+
+        var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 180f;
+        Quaternion newRot = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRot, Time.deltaTime * smoothCam);
 
         //if (angle >= -90f && angle <= 90f)
         //{
