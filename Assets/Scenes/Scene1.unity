@@ -2282,7 +2282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2, y: 3.3, z: -10}
+  m_LocalPosition: {x: -6.2, y: 6.78, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -34265,7 +34265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930671349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2, y: 3.3, z: 0}
+  m_LocalPosition: {x: -6.2, y: 6.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1175847591}
@@ -34417,7 +34417,7 @@ MonoBehaviour:
   - {fileID: 727663226}
   - {fileID: 510267163}
   - {fileID: 1725812842}
-  savePos: {x: -6.2, y: 3.3, z: 0}
+  savePos: {x: -6.2, y: 6.78, z: 0}
   deathScreenLong: 0.5
   deathScreenFadeMulti: 1
   moveAudioSource: {fileID: 930671356}
@@ -37150,7 +37150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392183598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2, y: 3.3, z: -10}
+  m_LocalPosition: {x: -6.2, y: 6.78, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 411814811}
