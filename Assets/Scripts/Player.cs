@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [Tooltip("Don't change")] [SerializeField] private float hp = 100f; //
     [Range(0, 4)] public int upgradeTierHealth = 0;
     [Range(0, 5)] public int upgradeTierDepth = 0;
+    public bool isFlashlightOn;
+    [SerializeField] private GameObject flashlightObject;
     public int[] crystalls;
     public bool isHarvesting;
     public PlayerWeapon weapon;
@@ -55,6 +57,12 @@ public class Player : MonoBehaviour
         depth = -Mathf.FloorToInt((transform.position.y - startY) * 2);
         if (depth < 0)
             depth = 0;
+
+        if (isFlashlightOn)
+            flashlightObject.SetActive(true);
+        else
+            flashlightObject.SetActive(false);
+
         textDepthCounter.text = depth.ToString();
         if (depth > maxDepth[upgradeTierDepth])
         {
