@@ -6,12 +6,14 @@ public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     public Transform bulletPivotPoint;
+    public AudioClip[] shootSounds;
     [SerializeField] private float[] damage;
     [Range(0.2f, 5f)][SerializeField] private float[] shootDelay;
     [SerializeField] private float[] travelTime;
     [SerializeField] private float[] travelSpeed;
     [SerializeField] private Sprite[] bulletSprites;
     [SerializeField] KeyCode keyShoot;
+    private Player player;
 
     [Range(0, 4)] public int upgradeTier = 0;
 
@@ -19,7 +21,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-        
+        player = GetComponent<Player>();
     }
     void Update()
     {
@@ -30,6 +32,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         canShoot = false;
 
+        player.damageAudioSource.PlayOneShot(shootSounds[Mathf.FloorToInt(Random.Range(0, shootSounds.Length - 0.01f))]);
         GameObject bullet = Instantiate(bulletPrefab, bulletPivotPoint.position, transform.rotation);
         bullet.transform.localScale = -transform.localScale;
         Bullet bulletScript = bullet.GetComponent<Bullet>();

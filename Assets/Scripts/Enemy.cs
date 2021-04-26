@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteRenderer childSpriteRenderer;
     private AudioSource audioSource;
+    public AudioClip takeDamageSound;
     private float maxDistance;
     private void Start()
     {
@@ -94,6 +95,13 @@ public class Enemy : MonoBehaviour
         gameObject.layer = 9;
     }
 
+    public void TakeDamage(float incomeDamage)
+    {
+        hp -= incomeDamage;
+        audioSource.PlayOneShot(takeDamageSound);
+        if (hp <= 0)
+            Death();
+    }
     public void Death()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

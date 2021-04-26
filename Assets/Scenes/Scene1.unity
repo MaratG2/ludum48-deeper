@@ -38671,6 +38671,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7356939563643055230, guid: 3e2a42c7b8fed864f85e6f33389f38e3,
     type: 3}
   bulletPivotPoint: {fileID: 56877203}
+  shootSounds:
+  - {fileID: 8300000, guid: 93f3ff3c70fd75f49bdb43714d002aed, type: 3}
   damage:
   - 1
   - 2
