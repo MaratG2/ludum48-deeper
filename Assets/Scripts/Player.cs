@@ -58,12 +58,12 @@ public class Player : MonoBehaviour
         textDepthCounter.text = depth.ToString();
         if (depth > maxDepth[upgradeTierDepth])
         {
+            textDepth.gameObject.SetActive(true);
             if (depthTimer < depthTime)
                 depthTimer += Time.deltaTime;
             else
             {
                 TakeDamage(depthDamage, true);
-                textDepth.gameObject.SetActive(true);
                 Debug.Log("DepthDamage");
                 depthTimer = 0f;
             }
